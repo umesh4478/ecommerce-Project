@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router"
 
-export const Products = ({search}) => {
+export const Products = ({search= ""}) => {
  const {name} = useParams()
   
   const [products, setproducts] = useState([])
   const [loading, setloading] = useState(true)
   const [error, seterror] = useState('')
 
-  const filterProducts= products.filter((item)=>{
-   return item.title.toLowerCase().includes(search.toLowerCase())
-  })
+  const filterProducts= products.filter((item)=>
+    item.title?.toLowerCase().includes(search.toLowerCase())
+  )
 
   useEffect(() => {
     getproducts()
@@ -27,7 +27,7 @@ export const Products = ({search}) => {
       let data = await response.json()
       console.log(data);
 
-      setproducts(data.products)
+      setproducts(data.products || [])
       setloading(false)
 
     } catch (error) {

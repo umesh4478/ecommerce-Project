@@ -5,15 +5,13 @@ import Navbar from "./Navbar";
 import { Products } from "./products";
 import { Category } from "./Category";
 
-export function Home(){
-    const [search, setsearch]= useState('')
+export function Home({search}){
+    
 
     return(
         <>
-        <Navbar search={search} setsearch={setsearch} />
         <Category/>
         <Products search={search} />
-        <Footer/>
-        </>
+                </>
     )
 }
