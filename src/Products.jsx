@@ -1,19 +1,29 @@
 import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router"
 
-export const Products = () => {
+export const Products = ({search}) => {
+ const {name} = useParams()
+  
   const [products, setproducts] = useState([])
   const [loading, setloading] = useState(true)
   const [error, seterror] = useState('')
 
+  const filterProducts= products.filter((item)=>{
+   return item.title.toLowerCase().includes(search.toLowerCase())
+  })
+
   useEffect(() => {
     getproducts()
-  }, [])
+  }, [name])
 
   const getproducts = async () => {
-
-
     try {
-      let response = await fetch('https://dummyjson.com/products')
+      
+    let url= name?`https://dummyjson.com/products/category/${name.toLowerCase()}`
+            :'https://dummyjson.com/products';
+
+
+      let response = await fetch(url)
       let data = await response.json()
       console.log(data);
 
@@ -41,7 +51,7 @@ export const Products = () => {
      
 <div className="min-h-screen bg-gray-100 px-12 py-2">
 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3">    {
-      products.map((item) => {
+      filterProducts.map((item) => {
         return (
           <div
             key={item.id}

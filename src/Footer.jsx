@@ -54,14 +54,14 @@ const Footer = () => {
                 <h3 className="  text-xl   p-3 font-bold text-green-400 ">Download App</h3>
                    
                 <div className="flex gap-6 text-2xl">
-                    <span className="text-3xl"><i class="fa-brands fa-facebook"></i></span>
-                    <span className="text-3xl" ><i class="fa-brands fa-x-twitter"></i></span>
+                    <span className="text-3xl"><i className="fa-brands fa-facebook"></i></span>
+                    <span className="text-3xl" ><i className="fa-brands fa-x-twitter"></i></span>
                     <Link>
                         <span className="text-3xl">
                             <i className="fa-brands fa-instagram"></i>
                         </span>
                     </Link>  
-                            <span className="text-3xl" ><i class="fa-brands fa-linkedin-in"></i></span>
+                            <span className="text-3xl" ><i className="fa-brands fa-linkedin-in"></i></span>
                 </div>
             </div>
         </footer>

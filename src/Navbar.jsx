@@ -1,7 +1,7 @@
 import React from "react";
 import { ShoppingCart, Search, User, Menu } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({search, setsearch}) => {
   return (
     <nav className="w-full bg-white shadow-md border-b">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -23,8 +23,8 @@ const Navbar = () => {
         {/* Search Bar */}
         <div className="hidden md:flex items-center border rounded-lg overflow-hidden w-80">
           <input
-            type="text"
-            placeholder="Search products..."
+            type="text" onChange={(e)=>setsearch(e.target.value)}
+            placeholder="Search products..." value={search}
             className="w-full px-3 py-2 outline-none"
           />
           <button className="bg-blue-600 text-white px-4 py-2">
