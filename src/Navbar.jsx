@@ -1,7 +1,9 @@
 import React from "react";
 import { ShoppingCart, Search, User, Menu } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const Navbar = ({search, setsearch}) => {
+  const navigate = useNavigate()
   return (
     <nav className="w-full bg-white shadow-md border-b">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -33,20 +35,24 @@ const Navbar = ({search, setsearch}) => {
         </div>
 
         {/* Icons */}
-        <div className="flex items-center gap-4 text-gray-700">
-          <button className="hover:text-blue-600">
-            <User size={22} />
-          </button>
-          <button className="relative hover:text-blue-600">
-            <ShoppingCart size={22} />
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
-              2
-            </span>
-          </button>
-          <button className="md:hidden hover:text-blue-600">
-            <Menu size={24} />
-          </button>
-        </div>
+        <div className="flex items-center gap-5 text-gray-700">
+
+  <button className="hover:text-blue-600 transition">
+    <i className="fa-solid fa-user text-2xl"></i>
+  </button>
+
+  <button className="relative hover:text-blue-600 transition" onClick={()=>navigate('/home/cart')} >
+    <i className="fa-solid fa-cart-arrow-down text-2xl"></i>
+
+    <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+      2
+    </span>
+  </button>
+<button className=" ml-15 hover:text-blue-600 transition">
+  <i className="fa-solid fa-bars text-2xl"> </i>
+</button>
+
+</div>
       </div>
     </nav>
   );
